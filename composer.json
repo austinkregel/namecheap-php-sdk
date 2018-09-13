@@ -5,6 +5,12 @@
     "keywords": ["api","namecheap"],
     "homepage": "https://github.com/speedster-kiev/namecheap-php-sdk",
     "license": "Apache-2.0",
+    "conflict": { 
+        "karazieiev/namecheap-php-sdk": "*"
+    },
+    "replace": { 
+        "karazieiev/namecheap-php-sdk": "*"
+    },
     "authors": [
         {
             "name": "Maksym Karazieiev",
