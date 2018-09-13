@@ -185,7 +185,7 @@ namespace Namecheap
 		 */
 		public function setData($value)
 		{
-			$this->_data['data'] = (string) substr($value, 0, 200);
+			$this->_data['data'] = (string) $value;
 			return $this;
 		}
 

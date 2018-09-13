@@ -1,5 +1,5 @@
 {
-    "name": "karazieiev/namecheap-php-sdk",
+    "name": "nonetallt/namecheap-php-sdk-fork",
     "type": "library",
     "description": "Namecheap API",
     "keywords": ["api","namecheap"],
@@ -11,6 +11,10 @@
             "email": "mkarazeev@gmail.com",
             "homepage": "",
             "role": "Developer"
+        },
+        {
+            "name": "Jyri Mikkola",
+            "email": "jyri.mikkola@pp.inet.fi"
         }
     ],
     "require": {
