@@ -6,18 +6,17 @@ ini_set('display_errors', true);
 
 include_once '../Api.php';
 
-try
-{
-	$config = new \Namecheap\Config();
-	$config->apiUser('api-username')
-		->apiKey('api-key')
-		->clientIp('your-ip')
-		->sandbox(true);
+try {
+    $config = new \Namecheap\Config();
+    $config->apiUser('api-username')
+        ->apiKey('api-key')
+        ->clientIp('your-ip')
+        ->sandbox(true);
 
-	$command = Namecheap\Api::factory($config, 'domains.dns.getHosts');
-	$command->domainName('example1.com')->dispatch();
+    $command = Namecheap\Api::factory($config, 'domains.dns.getHosts');
+    $command->domainName('example1.com')->dispatch();
 } catch (\Exception $e) {
-	die($e->getMessage());
+    die($e->getMessage());
 }
 
 $record = new Namecheap\DnsRecord();
@@ -28,9 +27,9 @@ $command->removeHost(1);
 
 d($command);
 
-function d($value = array())
+function d($value = [])
 {
-	echo '<pre>' . "\n";
-	print_r($value);
-	die('</pre>' . "\n");
+    echo '<pre>'."\n";
+    print_r($value);
+    die('</pre>'."\n");
 }
