@@ -6,25 +6,24 @@ ini_set('display_errors', true);
 
 include_once '../Api.php';
 
-try
-{
-	$config = new \Namecheap\Config();
-	$config->apiUser('api-username')
-		->apiKey('api-key')
-		->clientIp('your-ip')
-		->sandbox(true);
+try {
+    $config = new \Namecheap\Config();
+    $config->apiUser('api-username')
+        ->apiKey('api-key')
+        ->clientIp('your-ip')
+        ->sandbox(true);
 
-	$command = Namecheap\Api::factory($config, 'domains.getList');
-	$command->dispatch();
+    $command = Namecheap\Api::factory($config, 'domains.getList');
+    $command->dispatch();
 } catch (\Exception $e) {
-	die($e->getMessage());
+    die($e->getMessage());
 }
 
 d($command->domains);
 
-function d($value = array())
+function d($value = [])
 {
-	echo '<pre>' . "\n";
-	print_r($value);
-	die('</pre>' . "\n");
+    echo '<pre>'."\n";
+    print_r($value);
+    die('</pre>'."\n");
 }

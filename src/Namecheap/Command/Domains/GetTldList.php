@@ -6,7 +6,9 @@
 
 namespace Namecheap\Command\Domains\GetTldList
 {
-    class Exception extends \Exception {}
+    class Exception extends \Exception
+    {
+    }
 }
 
 namespace Namecheap\Command\Domains
@@ -16,16 +18,15 @@ namespace Namecheap\Command\Domains
      *
      * Returns list of all available TLDs.
      * Important: please cache respobse to avoid repeated calls.
-     *
-     * @package Namecheap\Command\Domains
      */
-    class GetTldList extends \Namecheap\Command\ACommand{
-
+    class GetTldList extends \Namecheap\Command\ACommand
+    {
         /**
          * Holds received TLDs list.
+         *
          * @var array
          */
-        public $tlds = array();
+        public $tlds = [];
 
         public function command()
         {
@@ -34,19 +35,17 @@ namespace Namecheap\Command\Domains
 
         public function params()
         {
-            return array();
+            return [];
         }
 
         /**
-         * Process TLD list
+         * Process TLD list.
          */
         protected function _postDispatch()
         {
-            foreach ($this->_response->Tlds->Tld as $entry)
-            {
-                $tld = array();
-                foreach ($entry->attributes() as $key => $value)
-                {
+            foreach ($this->_response->Tlds->Tld as $entry) {
+                $tld = [];
+                foreach ($entry->attributes() as $key => $value) {
                     $tld[$key] = (string) $value;
                 }
                 $this->tlds[] = $tld;
@@ -54,4 +53,4 @@ namespace Namecheap\Command\Domains
         }
     }
 
-} 
+}

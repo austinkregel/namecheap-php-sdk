@@ -6,18 +6,17 @@ ini_set('display_errors', true);
 
 include_once '../Api.php';
 
-try
-{
-	$config = new \Namecheap\Config();
-	$config->apiUser('api-username')
-		->apiKey('api-key')
-		->clientIp('your-ip')
-		->sandbox(true);
+try {
+    $config = new \Namecheap\Config();
+    $config->apiUser('api-username')
+        ->apiKey('api-key')
+        ->clientIp('your-ip')
+        ->sandbox(true);
 
-	$command = Namecheap\Api::factory($config, 'domains.check');
-	$command->domainList(array('example1.com', 'example2.me', 'acdealjfe.com'))->dispatch();
+    $command = Namecheap\Api::factory($config, 'domains.check');
+    $command->domainList(['example1.com', 'example2.me', 'acdealjfe.com'])->dispatch();
 } catch (\Exception $e) {
-	die($e->getMessage());
+    die($e->getMessage());
 }
 
 // Check single domain
@@ -31,14 +30,14 @@ echo ($command->isAvailable('billybob.com') === true) ? ' available' : ' not ava
 echo "<br/>\n";
 
 foreach ($command->domains as $domain => $available):
-	echo $domain;
-	echo ($available === true) ? ' available' : ' not available';
-	echo "<br/>\n";
+    echo $domain;
+    echo ($available === true) ? ' available' : ' not available';
+    echo "<br/>\n";
 endforeach;
 
-function d($value = array())
+function d($value = [])
 {
-	echo '<pre>' . "\n";
-	print_r($value);
-	die('</pre>' . "\n");
+    echo '<pre>'."\n";
+    print_r($value);
+    die('</pre>'."\n");
 }

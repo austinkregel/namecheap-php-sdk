@@ -2,14 +2,16 @@
 
 namespace Namecheap\Command\Domains\Renew
 {
-    class Exception extends \Exception {}
+    class Exception extends \Exception
+    {
+    }
 }
 
 namespace Namecheap\Command\Domains
 {
     class Renew extends \Namecheap\Command\ACommand
     {
-        public $domain = array();
+        public $domain = [];
 
         public function command()
         {
@@ -18,35 +20,37 @@ namespace Namecheap\Command\Domains
 
         public function params()
         {
-            return array(
-                'DomainName'    => null,
+            return [
+                'DomainName'       => null,
                 'Years'            => 1,
-            );
+            ];
         }
 
         /**
-         * Process domains array
+         * Process domains array.
          */
         protected function _postDispatch()
         {
-            foreach ($this->_response->DomainRenewResult->attributes() as $key => $value)
-            {
+            foreach ($this->_response->DomainRenewResult->attributes() as $key => $value) {
                 $this->domain[$key] = (string) $value;
             }
         }
 
         /**
-         * Get/set method for domain list, limited to 70 characters
+         * Get/set method for domain list, limited to 70 characters.
+         *
          * @param string $value
+         *
          * @return mixed
          */
         public function domainName($value = null)
         {
-            if (null !== $value)
-            {
+            if (null !== $value) {
                 $this->setParam('DomainName', (string) substr($value, 0, 70));
+
                 return $this;
             }
+
             return $this->getParam('DomainName');
         }
     }

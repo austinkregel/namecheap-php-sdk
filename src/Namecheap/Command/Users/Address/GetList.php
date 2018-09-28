@@ -5,23 +5,22 @@
 
 namespace Namecheap\Command\Users\Address\GetList
 {
-    class Exception extends \Exception {}
+    class Exception extends \Exception
+    {
+    }
 }
 
 namespace Namecheap\Command\Users\Address {
 
     /**
      * Gets a list of addressIDs and addressnames associated with the user account.
-     *
-     * @package Namecheap\Command\Users\Address
      */
     class GetList extends \Namecheap\Command\ACommand
     {
-
         /**
          * @var array
          */
-        public $addresses = array();
+        public $addresses = [];
 
         /**
          * @return string Namecheap command name
@@ -33,18 +32,17 @@ namespace Namecheap\Command\Users\Address {
 
         public function params()
         {
-            return array();
+            return [];
         }
 
         /**
          * Process addresses list.
          */
-        protected function _postDispatch() {
-            foreach ($this->_response->AddressGetListResult->List as $entry)
-            {
-                $address = array();
-                foreach ($entry->attributes() as $key => $value)
-                {
+        protected function _postDispatch()
+        {
+            foreach ($this->_response->AddressGetListResult->List as $entry) {
+                $address = [];
+                foreach ($entry->attributes() as $key => $value) {
                     $address[$key] = (string) $value;
                 }
                 $this->addresses[$address['AddressName']] = $address;
