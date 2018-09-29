@@ -1,34 +1,58 @@
 {
-    "name": "nonetallt/namecheap-php-sdk-fork",
+    "name": "kregel/namecheap-sdk",
     "type": "library",
     "description": "Namecheap API",
     "keywords": ["api","namecheap"],
-    "homepage": "https://github.com/speedster-kiev/namecheap-php-sdk",
+    "homepage": "https://github.com/austinkregel/namecheap-php-sdk",
     "license": "Apache-2.0",
     "conflict": { 
-        "karazieiev/namecheap-php-sdk": "*"
+        "karazieiev/namecheap-php-sdk": "*",
+        "nonetallt/namecheap-php-sdk-fork": "*"
     },
     "replace": { 
-        "karazieiev/namecheap-php-sdk": "*"
+        "karazieiev/namecheap-php-sdk": "*",
+        "nonetallt/namecheap-php-sdk-fork": "*"
     },
     "authors": [
         {
             "name": "Maksym Karazieiev",
             "email": "mkarazeev@gmail.com",
-            "homepage": "",
             "role": "Developer"
         },
         {
             "name": "Jyri Mikkola",
-            "email": "jyri.mikkola@pp.inet.fi"
+            "email": "jyri.mikkola@pp.inet.fi",
+            "role": "Developer"
+        },
+        {
+            "name": "Austin Kregel",
+            "email": "github@austinkrege.com",
+            "role": "Developer"
         }
     ],
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=7.1.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "ext-json": "*",
+        "ext-SimpleXML": "*",
+        "nesbot/carbon": "^2.2"
+    },
+    "require-dev": {
+        "larapack/dd": "^1.1",
+        "phpunit/phpunit": "^7.3",
+        "mockery/mockery": "^1.1"
     },
     "autoload": {
-        "psr-0": {
-            "Namecheap\\": "src"
+        "psr-4": {
+            "Kregel\\Namecheap\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kregel\\Namecheap\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     }
 }
