@@ -1,6 +1,38 @@
 # Namecheap PHP SDK
 Currently underdevelopment, and open to new PRs and issues.
 
+### Installation
+You can install the package via composer:
+```
+composer require kregel/namecheap-sdk
+```
+### Usage
+```php
+use Kregel\Namecheap\Api;
+use Kregel\Namecheap\Config;
+
+$config = new Config($apiUser, $apiKey, $username, $clientIp);
+
+$client = new Guzzlehttp\Client([
+    'base_uri' => Api::ENV_SANDBOX
+]);
+
+$api = new Api($config, $client)
+
+$myDomains = $api->domains()
+    ->getList();
+// Do stuff with my domains.
+```
+### Testing
+
+```
+composer test
+```
+
+That will also generate code coverage which you can see in the `build/coverage` directory.
+
+----
+
 Planned or available features. Right now I will only be adding in features that I need personally. If there is something that you need, please make a PR for it.
 
 *Note:* Due to Namecheaps... Odd way of naming and doing things for their docs this feature/roadmap list will follow the format [Command - description]
@@ -71,4 +103,6 @@ As of this moment I am not supporting SSL through NC because of projects like Le
   - [ ] whoisguard.getList - Gets a list of WhoisGuard privacy protection
   - [ ] whoisguard.renew - Renews WhoisGuard privacy protection
    
+  License
+  The MIT License (MIT). Please see License File for more information.
   
